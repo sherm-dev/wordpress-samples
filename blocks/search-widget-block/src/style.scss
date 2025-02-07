@@ -1,0 +1,129 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+
+
+.wp-block-jewishla-blocks-search-widget-block {
+	background-color: transparent;
+	background: none;
+	color: #000;
+	width:100%;
+	margin-bottom:60px;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .wp-block-search__input{
+	order:2 !important;
+	background:none !important;
+	background-color:transparent !important;
+	border-color:var(--wp--preset--color--light-gray) !important;
+	border-right-width:2px !important;
+	border-top-width:2px !important;
+	border-bottom-width:2px !important;
+	border-left-width:0px !important;
+	margin-left:0px !important;
+	border-style:solid;
+	color: var(--wp--preset--color--dark-gray) !important;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .wp-block-search__input:focus{
+	outline-color: transparent !important;
+	outline-width: 0px !important;
+  outline-offset: 0px;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .wp-block-search__button{
+	order:1 !important;
+	background:none !important;
+	background-color:transparent !important;
+	border-color:var(--wp--preset--color--light-gray) !important;
+	border-right-width:0px !important;
+	border-top-width:2px !important;
+	border-bottom-width:2px !important;
+	border-left-width:2px !important;
+	border-style:solid;
+	margin-right:0px !important;
+	border-radius:0px !important;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .wp-block-search__button svg path{
+	fill: var(--wp--preset--color--dark-gray) !important;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .clear{
+	display:block;
+	clear:both;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	width:100%;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-order-container{
+	margin-bottom:30px !important;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item .wp-block-image{
+	aspect-ratio:1;
+	height:60px !important;
+	margin-right: auto !important;
+  	margin-left: auto !important;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item h3{
+	margin-bottom:0 !important;
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--navy);
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item p.link{
+	margin-top:0px !important;
+	margin-bottom:0px !important;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item .program-block{
+	margin-bottom: var(--wp--preset--font-size--small);
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item p.excerpt,
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item p.link,
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item p.link > a,
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item .program-block,
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item .program-block span{
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--wp--preset--color--dark-gray);
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list .search-result-item .wp-block-image > img{
+	border-radius:50px;
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+
+.wp-block-jewishla-blocks-search-widget-block ul.tags{
+	list-style-type: none !important;
+	margin-left:0px !important;
+	margin-right:0px !important;
+	padding-left:0px !important;
+}
+
+.wp-block-jewishla-blocks-search-widget-block ul.tags > li{
+	display:inline-block;
+	float:left;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .search-widget-result-list{
+	padding-bottom:20px;
+}
+
+.wp-block-jewishla-blocks-search-widget-block .wp-block-search__button-outside{
+	margin-left:0px !important;
+	padding-left:0px !important;
+}

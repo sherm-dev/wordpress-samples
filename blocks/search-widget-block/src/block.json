@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "jewishla-blocks/search-widget-block",
+	"version": "0.1.0",
+	"title": "Search Widget Block",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "React Search Widget",
+	"attributes": {
+		"postType": {
+			"type": "array"
+		},
+		"defaultOrder": {
+			"type": "string",
+			"default": "DESC"
+		},
+		"defaultOrderby": {
+			"type": "string",
+			"default": "date"
+		}
+	},
+	"supports": {
+		"html": false,
+		"interactivity": true
+	},
+	"textdomain": "search-widget-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
