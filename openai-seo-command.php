@@ -1,7 +1,7 @@
 <?php
 	class Openai_Seo_Command{
 		const OPENAI_COMPLETION_URL = 'https://api.openai.com/v1/completions';
-		const OPENAI_API_KEY = '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';
+		const OPENAI_API_KEY = 'sk-xxxxxxxxxxxxxx';
 		
 		/**
 		 * Press & Media to excerpt
