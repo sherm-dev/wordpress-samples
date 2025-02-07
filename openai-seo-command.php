@@ -4,17 +4,18 @@
 		const OPENAI_API_KEY = 'sk-xxxxxxxxxxxxxx';
 		
 		/**
-		 * Press & Media to excerpt
+		 * Use content to create tags list and an SEO excerpt
 		 *
 		 *
 		 * ## OPTIONS
 		 *
+   		 *	<post_type>
 		 *	<number_of_posts>
-		 * 
+		 * 	<offset>
 		 *
 		 * ## EXAMPLES
 		 *
-		 *     $ wp content-swap press_media <number_of_posts or all>
+		 *     $ wp openai-seo post 20 0
 		 *
 		 *
 		 *	@when plugins_loaded
@@ -24,15 +25,12 @@
 		function __invoke($args){
 			list($post_type, $number_of_posts, $offset) = $args;
 			
-			echo self::OPENAI_API_KEY;
-			echo self::OPENAI_COMPLETION_URL;
-			
 			$posts = get_posts(
 				array(
-					'post_type'			=>		$post_type,
+					'post_type'		=>		$post_type,
 					'post_status'		=>		'publish',
 					'posts_per_page'	=>		'all' !== $number_of_posts ? $number_of_posts : -1,
-					'offset'			=>		isset($offset) ? $offset : 0
+					'offset'		=>		isset($offset) ? $offset : 0
 				)
 			);
 			
@@ -86,7 +84,7 @@
 		
 		private function terms_create($post){
 			$args = array(
-				'model'  => "gpt-3.5-turbo", //TODO: Change model
+				'model'  => "gpt-3.5-turbo",
 				'messages' => array(
 					array(
 						"role"			=>		"user",
@@ -105,13 +103,15 @@
 				'stop' => array(";")
 			);
 
-			$ch = curl_init("https://api.openai.com/v1/chat/completions");
+		
+			$key = self::OPENAI_API_KEY;
+			$ch = curl_init(self::OPENAI_COMPLETION_URL);
 
 			curl_setopt($ch, CURLOPT_POST, TRUE);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 			curl_setopt($ch, CURLOPT_UNRESTRICTED_AUTH, TRUE);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-				"Authorization: Bearer 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",
+				"Authorization: Bearer $key",
 				'Content-Type: application/json'
 			));
 
@@ -119,22 +119,17 @@
 
 			$result = curl_exec($ch);
 
-			
-
 			if(!empty(curl_error($ch)))
 				return array("result" => "", "error" =>  curl_error($ch));
 			
 			curl_close($ch);
 
 			$response = json_decode($result, TRUE);
-			
-			echo json_encode($response);
 
 			return array("result" => str_replace('"', "", stripslashes($response['choices'][0]['message']['content'])), "error" => 0); //remove slashes and double quotes
 		}
 		
 		private function excerpt_create($post, $terms){
-			//TODo: FIX PROMPT
 			$args = array(
 				'model'  => "gpt-3.5-turbo",
 				'messages' => array(
@@ -156,13 +151,14 @@
 				'stop' => array(";")
 			);
 
-			$ch = curl_init("https://api.openai.com/v1/chat/completions");
+			$key = self::OPENAI_API_KEY;
+			$ch = curl_init(self::OPENAI_COMPLETION_URL);
 
 			curl_setopt($ch, CURLOPT_POST, TRUE);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 			curl_setopt($ch, CURLOPT_UNRESTRICTED_AUTH, TRUE);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-				"Authorization: Bearer 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",
+				"Authorization: Bearer $key",
 				'Content-Type: application/json'
 			));
 
@@ -179,7 +175,7 @@
 			curl_close($ch);
 			
 			$response = json_decode($result, TRUE);
-			echo json_encode($response);
+			
 			return array("result" => $response['choices'][0]['message']['content'], "error" => 0); 
 		}
 	}
